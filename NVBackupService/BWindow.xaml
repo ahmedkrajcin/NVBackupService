@@ -1,0 +1,56 @@
+﻿<Window x:Class="NVBackupService.BWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NVBackupService"
+        mc:Ignorable="d"
+        Title="Add Backup and Upload Task" Height="674" Width="547">
+    <Grid Margin="0,0,0,0">
+        <Label x:Name="name" Content="DropboxFolderName" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,10,0,0"/>
+        <TextBox x:Name="DBFName" HorizontalAlignment="Left" Height="23" Margin="160,12,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="312"/>
+        <Label x:Name="name_Copy" Content="DropboxClear" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,38,0,0"/>
+        <TextBox x:Name="DBClear" HorizontalAlignment="Left" Height="23" Margin="160,40,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="312"/>
+        <Label x:Name="name_Copy1" Content="DatabaseType" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,65,0,0"/>
+        <TextBox x:Name="DType" HorizontalAlignment="Left" Height="23" Margin="160,67,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="312"/>
+        <Label x:Name="name_Copy2" Content="SQLConnectionString" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,93,0,0"/>
+        <TextBox x:Name="SQLCString" HorizontalAlignment="Left" Height="23" Margin="160,95,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="312"/>
+        <Label x:Name="name_Copy3" Content="SQLDatabaseName" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,122,0,0"/>
+        <TextBox x:Name="SQLDName" HorizontalAlignment="Left" Height="23" Margin="160,124,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="312"/>
+        <Label x:Name="name_Copy4" Content="BackupFolder" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,150,0,0"/>
+        <TextBox x:Name="BFolder" HorizontalAlignment="Left" Height="23" Margin="160,152,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="312"/>
+        <Label x:Name="name_Copy5" Content="RemoteFolder" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,177,0,0"/>
+        <TextBox x:Name="RFolder" HorizontalAlignment="Left" Height="23" Margin="160,179,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="312"/>
+        <Label x:Name="name_Copy6" Content="LocalFolder" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,205,0,0"/>
+        <TextBox x:Name="LFolder" HorizontalAlignment="Left" Height="23" Margin="160,207,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="312"/>
+        <Label x:Name="name_Copy7" Content="BackupFolder1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,232,0,0"/>
+        <TextBox x:Name="BF1" HorizontalAlignment="Left" Height="23" Margin="160,234,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="312"/>
+        <Label x:Name="name_Copy8" Content="BackupFolder2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,260,0,0"/>
+        <TextBox x:Name="BF2" HorizontalAlignment="Left" Height="23" Margin="160,262,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="312"/>
+        <Label x:Name="name_Copy9" Content="ClearBackupFolder" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,287,0,0"/>
+        <TextBox x:Name="CBFolder" HorizontalAlignment="Left" Height="23" Margin="160,289,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="312"/>
+        <Label x:Name="name_Copy10" Content="ClearRemoteFolder" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,315,0,0"/>
+        <TextBox x:Name="CRFolder" HorizontalAlignment="Left" Height="23" Margin="160,317,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="312"/>
+        <Label x:Name="name_Copy11" Content="ClearLocalFolder" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,344,0,0"/>
+        <TextBox x:Name="CLFolder" HorizontalAlignment="Left" Height="23" Margin="160,346,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="312"/>
+        <Label x:Name="name_Copy12" Content="ClearBackupFolder1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,372,0,0"/>
+        <TextBox x:Name="CBF1" HorizontalAlignment="Left" Height="23" Margin="160,374,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="312"/>
+        <Label x:Name="name_Copy13" Content="ClearBackupFolder2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,399,0,-1"/>
+        <TextBox x:Name="CBF2" HorizontalAlignment="Left" Height="23" Margin="160,401,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="312"/>
+        <Label x:Name="name_Copy14" Content="TaskActive" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,454,0,0"/>
+        <TextBox x:Name="TaskActive" HorizontalAlignment="Left" Height="23" Margin="160,456,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="312"/>
+        <Label x:Name="name_Copy15" Content="TaskStart" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,482,0,0"/>
+        <TextBox x:Name="TaskStart" HorizontalAlignment="Left" Height="23" Margin="160,484,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="312"/>
+        <Label x:Name="name_Copy16" Content="TaskEnd" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,510,0,0"/>
+        <TextBox x:Name="TaskEnd" HorizontalAlignment="Left" Height="23" Margin="160,512,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="312"/>
+        <Label x:Name="name_Copy17" Content="TaskRepeat" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,533,0,0"/>
+        <TextBox x:Name="TaskRepeat" HorizontalAlignment="Left" Height="23" Margin="160,535,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="312"/>
+        <Label x:Name="name_Copy18" Content="TaskLast" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,561,0,0"/>
+        <TextBox x:Name="TaskLast" HorizontalAlignment="Left" Height="23" Margin="160,563,0,0" TextWrapping="Wrap" IsReadOnly="True" VerticalAlignment="Top" Width="312"/>
+
+        <Button x:Name="saveButton" Content="Save Changes" HorizontalAlignment="Left" Margin="25,592,0,0" VerticalAlignment="Top" Width="109"/>
+        <Label x:Name="name_Copy19" Content="Name" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,426,0,0"/>
+        <TextBox x:Name="Name" HorizontalAlignment="Left" Height="23" Margin="160,428,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="312"/>
+
+    </Grid>
+</Window>

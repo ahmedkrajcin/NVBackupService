@@ -5,8 +5,208 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NVBackupService"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="NVBackupService" Foreground="Green" Height="461.5" Width="600">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="478*"/>
+            <ColumnDefinition Width="115*"/>
+        </Grid.ColumnDefinitions>
+        <TabControl Grid.ColumnSpan="2" >
+            <TabItem Header="Task Configuration" FontWeight="Bold" Margin="-2,-2,-2,2">
+                <TabControl x:Name="tabControl" >
+                    <TabItem Header="Backup and Upload Taks">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="49*"/>
+                                <ColumnDefinition Width="432*"/>
+                                <ColumnDefinition Width="91*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <ListBox HorizontalAlignment="Left" Margin="10,10,0,66" Name="backupListBox" Width="254" Grid.ColumnSpan="2"  >
+                                <ListBox.ItemTemplate >
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <TextBlock   Text="{Binding Name}" FontSize="12"  FontWeight="Bold" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                            <Button x:Name="bDeleteButton" Content="Delete" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" RenderTransformOrigin="0.553,13.273" Margin="140,0,0,10" Click="bDeleteButton_Click" Grid.Column="1"/>
+                            <Button x:Name="bViewButton" Content="View" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" Margin="10,0,0,10" Click="bViewButton_Click" Grid.ColumnSpan="2"/>
+                            <Button x:Name="bEditButton" Content="Edit" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" Margin="51,0,0,10" Click="bEditButton_Click" Grid.Column="1"/>
+                            <ListView ScrollViewer.CanContentScroll="False"  Margin="221,10,10,39" Name="backupItemListView" Grid.ColumnSpan="2" Grid.Column="1"    >
+                                <ListView.ItemTemplate >
+                                    <DataTemplate >
+                                        <StackPanel Orientation="Vertical" >
+                                            <TextBlock Text="Dropbox Folder Name: " />
+                                            <TextBlock   Text="{Binding DBFName}" FontSize="12" Foreground="Blue" FontWeight="Bold" />
+
+                                            <TextBlock Text="Dropbox Clear: " />
+                                            <TextBlock   Text="{Binding DBClear}" FontSize="12" Foreground="Blue" FontWeight="Bold" />
+
+                                            <TextBlock Text="Database Type: " />
+                                            <TextBlock   Text="{Binding DType}" FontSize="12"  Foreground="Blue" FontWeight="Bold" />
+
+                                            <TextBlock Text="SQL Connection String: " />
+                                            <TextBlock   Text="{Binding SQLCString}" FontSize="12" Foreground="Blue"  FontWeight="Bold" />
+
+                                            <TextBlock Text="SQL Database Name: " />
+                                            <TextBlock   Text="{Binding SQLDName}" FontSize="12"  Foreground="Blue" FontWeight="Bold" />
+
+                                            <TextBlock Text="Backup Folder: " />
+                                            <TextBlock   Text="{Binding BFolder}" FontSize="12" Foreground="Blue"  FontWeight="Bold" />
+
+                                            <TextBlock Text="Remote Folder: " />
+                                            <TextBlock   Text="{Binding RFolder}" FontSize="12"  Foreground="Blue" FontWeight="Bold" />
+
+                                            <TextBlock Text="Local Folder: " />
+                                            <TextBlock   Text="{Binding LFolder}" FontSize="12" Foreground="Blue"  FontWeight="Bold" />
+
+                                            <TextBlock Text="Backup Folder 1: " />
+                                            <TextBlock   Text="{Binding BF1}" FontSize="12"  Foreground="Blue" FontWeight="Bold" />
+
+                                            <TextBlock Text="Backup Folder 2: " />
+                                            <TextBlock   Text="{Binding BF2}" FontSize="12" Foreground="Blue"  FontWeight="Bold" />
+
+                                            <TextBlock Text="Clear Backup Folder: " />
+                                            <TextBlock   Text="{Binding CBFolder}" FontSize="12"  Foreground="Blue" FontWeight="Bold" />
+
+                                            <TextBlock Text="Clear Remote Folder: " />
+                                            <TextBlock   Text="{Binding CRFolder}" FontSize="12"  Foreground="Blue" FontWeight="Bold" />
+
+                                            <TextBlock Text="Clear Local Folder: " />
+                                            <TextBlock   Text="{Binding CLFolder}" FontSize="12"  Foreground="Blue" FontWeight="Bold" />
+
+                                            <TextBlock Text="Clear Backup Folder 1: " />
+                                            <TextBlock   Text="{Binding CBF1}" FontSize="12" Foreground="Blue"  FontWeight="Bold" />
+
+                                            <TextBlock Text="Clear Backup Folder: " />
+                                            <TextBlock   Text="{Binding CBF2}" FontSize="12" Foreground="Blue"  FontWeight="Bold" />
+
+                                            <TextBlock Text="Name: " />
+                                            <TextBlock   Text="{Binding Name}" FontSize="12" Foreground="Blue"  FontWeight="Bold" />
+
+                                            <TextBlock Text="Task Active: " />
+                                            <TextBlock   Text="{Binding TaskActive}" FontSize="12" Foreground="Blue"  FontWeight="Bold" />
+
+                                            <TextBlock Text="Task Start: " />
+                                            <TextBlock   Text="{Binding TaskStart}" FontSize="12" Foreground="Blue"  FontWeight="Bold" />
+
+                                            <TextBlock Text="Task End: " />
+                                            <TextBlock   Text="{Binding TaskEnd}" FontSize="12"  Foreground="Blue" FontWeight="Bold" />
+
+                                            <TextBlock Text="Task Repeat: " />
+                                            <TextBlock   Text="{Binding TaskRepeat }" FontSize="12"  Foreground="Blue" FontWeight="Bold" />
+
+                                            <TextBlock Text="Task Last: " />
+                                            <TextBlock   Text="{Binding TaskLast}" FontSize="12" Foreground="Blue"  FontWeight="Bold" />
+                                        </StackPanel>
+
+                                    </DataTemplate>
+
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <Button x:Name="backupAddbutton" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="254" Margin="10,0,0,39" Click="backupAddbutton_Click" Grid.ColumnSpan="2"/>
+
+                        </Grid>
+
+                    </TabItem>
+
+                    <TabItem Header="Upload Folder Task" Margin="-2,-2,-2,-1">
+                        <Grid Background="#FFE5E5E5" Margin="0,-5,0,4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="263*"/>
+                                <ColumnDefinition Width="23*"/>
+                            </Grid.ColumnDefinitions>
+                            <ListBox  Margin="10,10,0,66" HorizontalAlignment="Left" Name="folderListBox" Width="254">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding Name}" FontSize="12" FontWeight="Bold" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                            <Button x:Name="fViewButton" Content="View" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" Margin="10,0,0,10" RenderTransformOrigin="0.36,0.545" Click="fViewButton_Click"/>
+                            <Button x:Name="fEditButton" Content="Edit" HorizontalAlignment="Left" Margin="100,0,0,10" VerticalAlignment="Bottom" Width="75" Click="fEditButton_Click"/>
+                            <Button x:Name="fDeleteButton" Content="Delete" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" Margin="189,0,0,10" Click="fDeleteButton_Click"/>
+
+                            <ListView ScrollViewer.CanContentScroll="False"  Margin="270,10,10,39" Name="folderItemListView" Grid.ColumnSpan="2"  >
+                                <ListView.ItemTemplate >
+
+                                    <DataTemplate >
+
+                                        <StackPanel Orientation="Vertical" >
+                                            <TextBlock Text="Dropbox Folder Name: " />
+                                            <TextBlock   Text="{Binding DBFName}" FontSize="12" Foreground="Blue" FontWeight="Bold" />
+
+                                            <TextBlock Text="Dropbox Clear: " />
+                                            <TextBlock   Text="{Binding DBClear}" FontSize="12" Foreground="Blue" FontWeight="Bold" />
+
+                                            <TextBlock Text="Folder Path: " />
+                                            <TextBlock   Text="{Binding FPath}" FontSize="12"  Foreground="Blue" FontWeight="Bold" />
+
+                                            <TextBlock Text="Name: " />
+                                            <TextBlock   Text="{Binding Name}" FontSize="12" Foreground="Blue"  FontWeight="Bold" />
+
+                                            <TextBlock Text="Task Active: " />
+                                            <TextBlock   Text="{Binding TaskActive}" FontSize="12" Foreground="Blue"  FontWeight="Bold" />
+
+                                            <TextBlock Text="Task Start: " />
+                                            <TextBlock   Text="{Binding TaskStart}" FontSize="12" Foreground="Blue"  FontWeight="Bold" />
+
+                                            <TextBlock Text="Task End: " />
+                                            <TextBlock   Text="{Binding TaskEnd}" FontSize="12"  Foreground="Blue" FontWeight="Bold" />
+
+                                            <TextBlock Text="Task Repeat: " />
+                                            <TextBlock   Text="{Binding TaskRepeat }" FontSize="12"  Foreground="Blue" FontWeight="Bold" />
+
+                                            <TextBlock Text="Task Last: " />
+                                            <TextBlock   Text="{Binding TaskLast}" FontSize="12" Foreground="Blue"  FontWeight="Bold" />
+                                        </StackPanel>
+
+                                    </DataTemplate>
+
+                                </ListView.ItemTemplate>
+                            </ListView>
+
+                            <Button x:Name="folderAddbutton" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="254" Margin="10,0,0,39" Click="folderAddbutton_Click"/>
+                        </Grid>
+
+                    </TabItem>
+
+                </TabControl>
+
+            </TabItem>
+            <TabItem Header="Logs" FontWeight="Bold" Height="23" VerticalAlignment="Top">
+                <Grid Background="#FFE5E5E5">
+                    <Grid Background="#FFE5E5E5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="17*"/>
+                            <ColumnDefinition Width="566*"/>
+                        </Grid.ColumnDefinitions>
+                        <ListBox   HorizontalAlignment="Left" Name="logListBox" Width="215" Margin="10,10,0,37" Grid.ColumnSpan="2">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding Name}" FontSize="12" FontWeight="Bold" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        <Button x:Name="lViewButton" Content="View" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" Margin="15,0,0,10" RenderTransformOrigin="0.36,0.545" Click="lViewButton_Click" Grid.ColumnSpan="2"/>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="213.5,10,10,37" Grid.Column="1">
+                            <TextBlock x:Name="textBlock" Background="White" HorizontalAlignment="Left"  TextWrapping="Wrap"  VerticalAlignment="Top" />
+                        </ScrollViewer>
+
+                    </Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button x:Name="saveButton" Content="Save" HorizontalAlignment="Left" Margin="200,2,70,0" Width="79"  VerticalAlignment="Top" Click="saveButton_Click"/>
+        <Button x:Name="startStopButton" Content="Start" HorizontalAlignment="Left" VerticalAlignment="Top"  Width="79"  Margin="300,2,56,0"   Click="startButton_Click" Grid.ColumnSpan="2">
+
+        </Button>
+
     </Grid>
 </Window>
