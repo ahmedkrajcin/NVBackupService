@@ -29,6 +29,7 @@ namespace NVBackupService
             DBFName.Text = ((FolderTask)((MainWindow)Application.Current.MainWindow).folderListBox.SelectedItem).DBFName;
             DBClear.Text = ((FolderTask)((MainWindow)Application.Current.MainWindow).folderListBox.SelectedItem).DBClear.ToString();
             FPath.Text = ((FolderTask)((MainWindow)Application.Current.MainWindow).folderListBox.SelectedItem).FPath;
+            Name.Text = ((FolderTask)((MainWindow)Application.Current.MainWindow).folderListBox.SelectedItem).Name;
             TaskActive.Text = ((FolderTask)((MainWindow)Application.Current.MainWindow).folderListBox.SelectedItem).TaskActive.ToString();
             TaskStart.Text = ((FolderTask)((MainWindow)Application.Current.MainWindow).folderListBox.SelectedItem).TaskStart;
             TaskEnd.Text = ((FolderTask)((MainWindow)Application.Current.MainWindow).folderListBox.SelectedItem).TaskEnd;
@@ -41,8 +42,9 @@ namespace NVBackupService
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
             ((MainWindow)Application.Current.MainWindow).FList.Remove(folderTask);
-            ((MainWindow)Application.Current.MainWindow).backupListBox.ItemsSource = null;
-            ((MainWindow)Application.Current.MainWindow).backupListBox.ItemsSource = ((MainWindow)Application.Current.MainWindow).FList;
+            ((MainWindow)Application.Current.MainWindow).folderListBox.ItemsSource = null;
+            ((MainWindow)Application.Current.MainWindow).folderListBox.ItemsSource = ((MainWindow)Application.Current.MainWindow).FList;
+
             ((MainWindow)Application.Current.MainWindow).FList.Add(new FolderTask()
             {
                 DBFName = DBFName.Text,
@@ -56,6 +58,7 @@ namespace NVBackupService
                 TaskLast = TaskLast.Text
             });
             ((MainWindow)Application.Current.MainWindow).folderListBox.ItemsSource = null;
+            ((MainWindow)Application.Current.MainWindow).folderItemListView.ItemsSource = null;
             ((MainWindow)Application.Current.MainWindow).folderListBox.ItemsSource = ((MainWindow)Application.Current.MainWindow).FList;
             this.Close();
 

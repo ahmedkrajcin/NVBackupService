@@ -55,9 +55,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddBWindow.xaml.cs">
+      <DependentUpon>AddBWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddFWindow.xaml.cs">
+      <DependentUpon>AddFWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BackupView.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="TaskConfig.cs" />
+    <Page Include="AddBWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddFWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="BWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

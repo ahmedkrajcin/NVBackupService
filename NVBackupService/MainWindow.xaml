@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NVBackupService"
         mc:Ignorable="d"
-        Title="NVBackupService" Foreground="Green" Height="461.5" Width="600">
+        Title="NVBackupService" Foreground="Green" Height="461.5" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="478*"/>
@@ -31,9 +31,9 @@
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                             </ListBox>
-                            <Button x:Name="bDeleteButton" Content="Delete" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" RenderTransformOrigin="0.553,13.273" Margin="140,0,0,10" Click="bDeleteButton_Click" Grid.Column="1"/>
+                            <Button x:Name="bDeleteButton" Content="Delete" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" RenderTransformOrigin="0.553,13.273" Margin="123,0,0,10" Click="bDeleteButton_Click" Grid.Column="1"/>
                             <Button x:Name="bViewButton" Content="View" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" Margin="10,0,0,10" Click="bViewButton_Click" Grid.ColumnSpan="2"/>
-                            <Button x:Name="bEditButton" Content="Edit" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" Margin="51,0,0,10" Click="bEditButton_Click" Grid.Column="1"/>
+                            <Button x:Name="bEditButton" Content="Edit" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="74" Margin="30,0,0,10" Click="bEditButton_Click" Grid.Column="1"/>
                             <ListView ScrollViewer.CanContentScroll="False"  Margin="221,10,10,39" Name="backupItemListView" Grid.ColumnSpan="2" Grid.Column="1"    >
                                 <ListView.ItemTemplate >
                                     <DataTemplate >

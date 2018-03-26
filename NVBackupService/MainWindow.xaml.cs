@@ -27,10 +27,10 @@ namespace NVBackupService
     {
         private List<BackupTask> bList = new List<BackupTask>();
         public List<FolderTask> fList = new List<FolderTask>();
+        bool start = false;
         List<Log> logList;
         string  taskPath=@"C:\Users\user\Desktop\JUNIOR DEVELOPER TASK\TasksConfig.xml";
         string logPath = @"C:\Users\user\Desktop\JUNIOR DEVELOPER TASK\Logs";
-        XElement xel = new XElement("TasksConfig");
 
 
         public List<BackupTask> BList
@@ -64,13 +64,11 @@ namespace NVBackupService
             InitializeComponent();
 
 
-            getTasks();
-
-            getLogFiles();
+           
            
 
 
-           // doc.Save("D:\\build.xml");
+          
 
             
 
@@ -189,6 +187,8 @@ namespace NVBackupService
             folderListBox.ItemsSource = null;
             folderListBox.ItemsSource = FList;
             saveButton.Background = Brushes.Blue;
+            folderItemListView.ItemsSource = null;
+
 
         }
 
@@ -200,6 +200,7 @@ namespace NVBackupService
             backupListBox.ItemsSource = null;
             backupListBox.ItemsSource = BList;
             saveButton.Background = Brushes.Blue;
+            backupItemListView.ItemsSource = null;
 
 
         }
@@ -218,45 +219,103 @@ namespace NVBackupService
 
         private void backupAddbutton_Click(object sender, RoutedEventArgs e)
         {
+            AddBWindow win = new AddBWindow();
+            win.Show();
 
         }
 
         private void folderAddbutton_Click(object sender, RoutedEventArgs e)
         {
+            AddFWindow win = new AddFWindow();
+            win.Show();
 
         }
 
         private void saveButton_Click(object sender, RoutedEventArgs e)
 
-        {
-            XmlDocument doc = new XmlDocument();
-            doc.Load(@"C:\Users\user\Desktop\JUNIOR DEVELOPER TASK\TasksConfig1.xml");
-            doc.RemoveAll();
-
-
-            foreach (BackupTask btask in bList)
+        {  if (fList.Any<FolderTask>() && bList.Any<BackupTask>())
             {
-                var newChild = new XElement("BackupAndUploadTask",
-                                          new XElement("Name",
-                                          new XAttribute("Value", btask.Name)),
-                                          new XElement("Name",
-                                          new XAttribute("Value", btask.Name)),
-                                          new XElement("Name",
-                                          new XAttribute("Value", btask.Name)),
-                                          new XElement("Name",
-                                          new XAttribute("Value", btask.Name)));
-                xel.Add(newChild);
-                
+
+                XElement xel = new XElement("TasksConfig");
+
+
+
+                foreach (BackupTask btask in bList)
+                {
+                    var newChild = new XElement("BackupAndUploadTask",
+                                              new XElement("DropBoxFolderName", new XAttribute("Value", btask.DBFName)),
+                                              new XElement("DropboxClear", new XAttribute("Value", btask.DBClear)),
+                                              new XElement("DatabaseType", new XAttribute("Value", btask.DType)),
+                                              new XElement("SqlConnectionString", new XAttribute("Value", btask.SQLCString)),
+                                              new XElement("SqlDatabaseName", new XAttribute("Value", btask.SQLDName)),
+                                              new XElement("BackupsFolder", new XAttribute("Value", btask.BFolder)),
+                                              new XElement("RemoteFolder", new XAttribute("Value", btask.RFolder)),
+                                              new XElement("LocalFolder", new XAttribute("Value", btask.LFolder)),
+                                              new XElement("BackupFolder1", new XAttribute("Value", btask.BF1)),
+                                              new XElement("BackupFolder2", new XAttribute("Value", btask.BF2)),
+                                              new XElement("ClearBackupsFolder", new XAttribute("Value", btask.CBFolder)),
+                                              new XElement("ClearRemoteFolder", new XAttribute("Value", btask.CRFolder)),
+                                              new XElement("ClearLocalFolder", new XAttribute("Value", btask.CLFolder)),
+                                              new XElement("ClearBackupFolder1", new XAttribute("Value", btask.CBF1)),
+                                              new XElement("ClearBackupFolder2", new XAttribute("Value", btask.CBF2)),
+                                              new XElement("Name", new XAttribute("Value", btask.Name)),
+                                              new XElement("TaskActive", new XAttribute("Value", btask.TaskActive)),
+                                              new XElement("TaskStart", new XAttribute("Value", btask.TaskStart)),
+                                              new XElement("TaskEnd", new XAttribute("Value", btask.TaskEnd)),
+                                              new XElement("TaskRepeat", new XAttribute("Value", btask.TaskRepeat)),
+                                              new XElement("TaskLast", new XAttribute("Value", btask.TaskLast)));
+                    xel.Add(newChild);
+
+                }
+
+                foreach (FolderTask btask in fList)
+                {
+                    var newChild = new XElement("UploadFolderTask",
+                                              new XElement("DropBoxFolderName", new XAttribute("Value", btask.DBFName)),
+                                              new XElement("DropboxClear", new XAttribute("Value", btask.DBClear)),
+                                              new XElement("FolderPath", new XAttribute("Value", btask.FPath)),
+                                              new XElement("Name", new XAttribute("Value", btask.Name)),
+                                              new XElement("TaskActive", new XAttribute("Value", btask.TaskActive)),
+                                              new XElement("TaskStart", new XAttribute("Value", btask.TaskStart)),
+                                              new XElement("TaskEnd", new XAttribute("Value", btask.TaskEnd)),
+                                              new XElement("TaskRepeat", new XAttribute("Value", btask.TaskRepeat)),
+                                              new XElement("TaskLast", new XAttribute("Value", btask.TaskLast)));
+                    xel.Add(newChild);
+
+                }
+                System.IO.File.WriteAllText(taskPath, string.Empty);
+
+                xel.Save(taskPath);
             }
-            xel.Save(@"C:\Users\user\Desktop\JUNIOR DEVELOPER TASK\TasksConfig1.xml");
             saveButton.Background = Brushes.LightGray;
 
         }
 
         private void startButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            if (start == false)
+            {
+                getTasks();
 
+                getLogFiles();
+                start = true;
+                startStopButton.Background = Brushes.Green;
+            }
+            else
+            {
+                fList.Clear();
+                bList.Clear();
+                backupItemListView.ItemsSource = null;
+                folderItemListView.ItemsSource = null;
+                folderListBox.ItemsSource = null;
+                backupListBox.ItemsSource = null;
+                logListBox.ItemsSource = null;
+
+                start = false;
+
+                startStopButton.Background = Brushes.Red;
+                
+            }
         }
 
         private void bEditButton_Click(object sender, RoutedEventArgs e)
@@ -266,13 +325,16 @@ namespace NVBackupService
             
             BWindow win2 = new BWindow();
             win2.Show();
-           //this.Close();
+            saveButton.Background = Brushes.Blue;
+
+            //this.Close();
         }
 
         private void fEditButton_Click(object sender, RoutedEventArgs e)
         {
             FWindow1 win2 = new FWindow1();
             win2.Show();
+            saveButton.Background = Brushes.Blue;
 
         }
     }

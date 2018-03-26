@@ -44,6 +44,8 @@ namespace NVBackupService
             CLFolder.Text = ((BackupTask)((MainWindow)Application.Current.MainWindow).backupListBox.SelectedItem).CLFolder.ToString();
             CBF1.Text = ((BackupTask)((MainWindow)Application.Current.MainWindow).backupListBox.SelectedItem).CBF1.ToString();
             CBF2.Text = ((BackupTask)((MainWindow)Application.Current.MainWindow).backupListBox.SelectedItem).CBF2.ToString();
+            Name.Text = ((BackupTask)((MainWindow)Application.Current.MainWindow).backupListBox.SelectedItem).Name;
+
             TaskActive.Text = ((BackupTask)((MainWindow)Application.Current.MainWindow).backupListBox.SelectedItem).TaskActive.ToString();
             TaskStart.Text = ((BackupTask)((MainWindow)Application.Current.MainWindow).backupListBox.SelectedItem).TaskStart;
             TaskEnd.Text = ((BackupTask)((MainWindow)Application.Current.MainWindow).backupListBox.SelectedItem).TaskEnd;
@@ -53,10 +55,14 @@ namespace NVBackupService
 
         }
 
-        private void saveButton_Click(object sender, RoutedEventArgs e)
+       
+
+        private void saveButton_Click_1(object sender, RoutedEventArgs e)
         {
             ((MainWindow)Application.Current.MainWindow).BList.Remove(backupTask);
             ((MainWindow)Application.Current.MainWindow).backupListBox.ItemsSource = null;
+            ((MainWindow)Application.Current.MainWindow).backupItemListView.ItemsSource = null;
+
             ((MainWindow)Application.Current.MainWindow).backupListBox.ItemsSource = ((MainWindow)Application.Current.MainWindow).BList;
             ((MainWindow)Application.Current.MainWindow).BList.Add(new BackupTask()
             {
@@ -85,8 +91,6 @@ namespace NVBackupService
             ((MainWindow)Application.Current.MainWindow).backupListBox.ItemsSource = null;
             ((MainWindow)Application.Current.MainWindow).backupListBox.ItemsSource = ((MainWindow)Application.Current.MainWindow).BList;
             this.Close();
-
-
         }
     }
 }
